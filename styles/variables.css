@@ -1,6 +1,6 @@
 :root {
     --Inter-font: "Inter-Variable", sans-serif;
-    --PressStart2P-font: "PressStart2P-Regular", monospace;
+    --PressStart2P-font: "PressStart2P", monospace;
     --fon-gradient:
         repeating-linear-gradient(to right, #d3d3d3 0 2px, transparent 2px 4px),
         repeating-linear-gradient(to bottom, #d3d3d3 0 2px, transparent 2px 4px),

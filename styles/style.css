@@ -133,28 +133,33 @@
   border: 2px solid transparent;
   cursor: pointer;
   transition: border-color 0.3s ease;
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 39px;
-  height: 38px; 
-  padding: 0;  
+  height: 38px;
+  padding: 0;
 }
 
 .like-icon {
   transform-origin: center;
 }
 
+.button {
+  font-family: var(--PressStart2P-font);
+  border: 2px solid var(--accent-color);
+  background-color: var(--background-color);
+  font-size: 14px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
 .card__like-button {
   position: relative;
   width: 130px;
   height: 38px;
-  border: 2px solid var(--accent-color);
-  font-family: var(--PressStart2P-font);
-  background-color: var(--background-color);
-  transition: box-shadow 0.3s ease;
   overflow: hidden;
   z-index: 1;
-  cursor: pointer;
 }
 
 .button__text {
@@ -165,25 +170,16 @@
   mix-blend-mode: difference;
 }
 
-.buttons_styles {
-  font-family: var(--PressStart2P-font);
-  border: 2px solid var(--accent-color);
-  background-color: var(--background-color);
-  margin-inline: auto;
-  font-size: 14px;
-  cursor: pointer;
-}
-
 .save_button {
   position: relative;
   width: 335px;
   height: 55px;
+  margin-inline: auto;
   display: flex;
   align-items: center;
-  background-color: var(--background-color);
+  justify-content: center;
   gap: 8px;
   margin-block-end: 100px;
-  transition: box-shadow 0.3s ease;
   overflow: hidden;
   z-index: 1;
 }
@@ -197,7 +193,7 @@
   mix-blend-mode: difference;
 }
 
-#dialog-id {
+.dialog-floppy {
   font-family: var(--PressStart2P-font);
   display: none;
   border: 2px solid var(--accent-color);
@@ -206,20 +202,25 @@
   left: 50%;
   transform: translate(-50%, -50%);
   margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 150%;
+  text-transform: uppercase;
 }
 
-#dialog-id[open] {
+.dialog-floppy[open] {
   display: block;
 }
 
-#dialog-id::backdrop {
+.dialog-floppy::backdrop {
   background-color: var(--accent-color);
   opacity: 75%;
-  backdrop-filter: blur(7px);
 }
 
 .dialog-block {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 20px;
   padding: 30px;
 }
@@ -228,11 +229,11 @@
   position: relative;
   display: grid;
   place-items: center;
+  margin-inline: auto;
   border: 2px solid var(--accent-color);
   width: 293px;
   height: 38px;
   margin-block-end: 30px;
-  transition: box-shadow 0.3s ease;
   background-color: var(--background-color);
   color: var(--text-color);
   overflow: hidden;
@@ -242,11 +243,12 @@
 .save-icon-dialog {
   width: 39px;
   height: 39px;
+  flex-shrink: 0;
   color: var(--accent-color);
 }
 
 .dialog-text {
-  max-width: 234px;
+  width: 234px;
 }
 
 @media (width < 376px) {
@@ -266,47 +268,41 @@
     width: 28px;
     height: 28px;
   }
+
+  .dialog-block {
+    padding: 30px 40px;
+  }
+
+  .close-button {
+    width: 261px;
+  }
 }
 
-.second-card__image-filter {
-  filter: contrast(150%);
-}
-
-.third-card__image-filter {
+.contrast-filter {
   filter: contrast(200%);
 }
 
-.fourth-card__image-filter {
+.saturate-filter {
   filter: saturate(300%);
 }
 
-.fifth-card__image-filter {
+.brightness-filter {
   filter: brightness(30%);
 }
 
-.sixth-card__image-filter {
+.hue-rotate-filter {
   filter: hue-rotate(0.5turn);
 }
 
-.seventh-card__image-filter {
+.sepia-filter {
   filter: sepia(0.6);
 }
 
-.eight-card__image-filter {
+.grayscale-and-contrast-filter {
   filter: grayscale(100%) contrast(250%);
 }
 
-.card_like-button:focus {
-  outline: none;
-  box-shadow: 2px 2px 0 0 var(--accent-color);
-}
-
-.save_button:focus {
-  outline: none;
-  box-shadow: 2px 2px 0 0 var(--accent-color);
-}
-
-.close-button:focus {
+.button:focus {
   outline: none;
   box-shadow: 2px 2px 0 0 var(--accent-color);
 }
@@ -316,12 +312,11 @@
 }
 
 .card__icon-button:focus-visible {
-  border-color: 2px solid var(--accent-color);
+  border-color: var(--accent-color);
+  ;
 }
 
-.card_like-button::before,
-.save_button::before,
-.close-button::before {
+.button::before {
   content: "";
   position: absolute;
   top: 0;
@@ -334,9 +329,7 @@
   transition: transform 0.5s ease-in-out;
 }
 
-.card_like-button:hover::before,
-.save_button:hover::before,
-.close-button:hover::before {
+.button:hover::before {
   transform: translateX(0);
 }
 
@@ -379,8 +372,8 @@
 }
 
 .like-icon.is-liked .contour {
-   fill: var(--animation-fill-color);
-   transition: fill 0.3s linear 0.06s;
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear 0.06s;
 }
 
 .like-icon.is-liked .core {
